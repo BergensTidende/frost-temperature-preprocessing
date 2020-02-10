@@ -1,9 +1,14 @@
 import os, json, requests
 import pandas as pd
+import geopandas
 from plotnine import *
 
+os.chdir('/Users/adroesch/Documents/git/20-01_frost-data/air_temperature/')
+
 # plot all stations 10y avgs
-d = json.load(open('data/frost_clean.json','r'))
+d = json.load(open('frost_clean.json','r'))
+s = d['sources']
+# [i for i in s if 'bergen' in i['municipality'].lower()]
 o = d['observations']
 for k,v in o.items():
     for i in v:
